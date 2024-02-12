@@ -1,0 +1,39 @@
+body {
+    background-color: blueviolet;
+}
+
+.board {
+    
+    height: 500px;
+    width: 500px;
+
+    border-radius: 20px;
+    border: 10px solid black;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    
+    background-color: whitesmoke;
+    gap: 8px;
+    
+    
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.cell {
+    display: flex;
+       
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 40px;
+    /* border: 4px solid grey; */
+    background-color: wheat;
+    
+    cursor: pointer;
+
+    border: none;
+}

@@ -86,8 +86,6 @@ function GameController (
     }
 
     const playTurn = (row, column) => {
-     
-  
 
         if (gameBoard.getBoard()[row][column].getValue() === '') {
             gameBoard.markCell(row, column, getActivePlayer());
@@ -105,7 +103,6 @@ function GameController (
             return;
         }
         switchPlayerTurn();
-
         printNewRound();
     }
     printNewRound();
@@ -155,8 +152,6 @@ function GameController (
                 return `Player ${getActivePlayer().name} wins!`   
             }
 
-
-
         return null;
     }
 
@@ -164,10 +159,61 @@ function GameController (
         playTurn,
         getActivePlayer,
         checkGameStatus,
+        gameBoard,
         printNewRound   
     };
     
 }
 
+
 const game = GameController();
+// DOMMING
+function ScreenController() {
+
+    
+    const playerTurnDiv = document.querySelector('.turn');
+    const boardDiv = document.querySelector('.board');
+
+    const updateScreen = () => {
+        boardDiv.textContent = '';
+        const board = game.gameBoard.getBoard();
+        
+        const activePlayer = game.getActivePlayer();
+        playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
+
+
+        board.forEach((row, rowIndex) => {
+            row.forEach((cell, columnIndex) => {
+                const cellButton = document.createElement("button");
+                cellButton.classList.add("cell");
+
+                cellButton.dataset.column = columnIndex;
+                cellButton.dataset.row = rowIndex;
+
+                cellButton.textContent = cell.getValue();
+                boardDiv.appendChild(cellButton);
+            });
+        });
+    }
+    
+
+    function clickHandlerBoard(e) {
+
+        if (e.target.classList.contains("cell")){
+
+            const selectedColumn = parseInt(e.target.dataset.column);
+            const selectedRow = parseInt(e.target.dataset.row);
+    
+            game.playTurn(selectedRow, selectedColumn);
+            updateScreen();
+    
+        }
+    }
+
+    boardDiv.addEventListener("click", clickHandlerBoard);
+    updateScreen();
+
+}
+
+ScreenController();
 
