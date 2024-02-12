@@ -133,7 +133,7 @@ function GameController (
                 board[1][i].getValue() === board[2][i].getValue() && 
                 board[0][i].getValue()!==''
                 ){
-                return `Player ${getActivePlayer().name} wins!`
+                return `Player ${getActivePlayer().name} wins!`;
             }
         }
 
