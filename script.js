@@ -1,4 +1,12 @@
+const playerOneInput = document.getElementById('player-name-one');
+const playerTwoInput = document.getElementById('player-name-two');
+
+
 function startGame(){
+
+
+    const name1 = playerOneInput.value.trim() !== '' ? playerOneInput.value.trim() : 'Player 1';
+    const name2 = playerTwoInput.value.trim() !== '' ? playerTwoInput.value.trim() : 'Player 2';
 
     const board = document.querySelector('.board');
     const statusDiv = document.querySelector('.status');
@@ -62,8 +70,8 @@ function startGame(){
     
     
     function GameController (
-        playerOneName = "Pranjal",
-        playerTwoName = "Shiva"
+        playerOneName = "Player 1",
+        playerTwoName = "Player 2"
     ) {
         const gameBoard = Gameboard();
     
@@ -95,7 +103,8 @@ function startGame(){
         }
     
         const playTurn = (row, column) => {
-    
+        statusDiv.textContent = ''; // Clear the status message at the beginning of each turn
+
             if (gameBoard.getBoard()[row][column].getValue() === '') {
                 gameBoard.markCell(row, column, getActivePlayer());
                 // statusDiv.textContent=`Marking (${row}, ${column}) cell with ${getActivePlayer().name}'s marker '${getActivePlayer().marker}'`;
@@ -130,7 +139,10 @@ function startGame(){
             
             
             printNewRound();
+            
         }
+        
+
         printNewRound();
     
         const checkGameStatus = (arr) => {
@@ -193,7 +205,7 @@ function startGame(){
     }
     
     
-    const game = GameController();
+    const game = GameController(name1, name2);
     // DOMMING
     function ScreenController() {
     

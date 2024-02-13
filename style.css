@@ -1,14 +1,18 @@
+* {
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 700;
+}
+
 body {
     background-color: blueviolet;
-    
-    height: 90vh; 
     
 }
 
 .container {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 10px;
+    
 }
 
 .hidden {
@@ -30,6 +34,7 @@ body {
     gap: 8px;
     
     
+    
     top: 50%;
     left: 50%;
     position: absolute;
@@ -49,6 +54,8 @@ body {
     
     cursor: pointer;
 
+    font-size: 80px;
+
     border: none;
 }
 
@@ -60,13 +67,20 @@ body {
 }
 
 .turn {
-    
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
     margin: 0 auto;
 }
 
 .status {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
     margin: 0 auto;
 }
+
+input, button {
+    border-radius: 5px;
+}
+
+#start {
+    margin-top: 40px;
+}
+

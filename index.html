@@ -14,7 +14,15 @@
     
     <div class="container">
         <div id="turn" class="turn">
-            <button onclick="startGame()" type="button" id="start">Play Game!</button>
+            <form id="playerNamesForm">
+                <div>
+                    <label for="player-name-one">Player one name</label>
+                    <input type="text" id="player-name-one" required>
+                    <label for="player-name-two">Player two name</label>
+                    <input type="text" id="player-name-two" required>
+                </div>
+                <button type="button" onclick="startGame()" id="start">Play Game!</button>
+            </form>
         </div>
         
         <div id="status" class="status"></div>
