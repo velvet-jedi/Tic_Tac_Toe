@@ -91,7 +91,7 @@ function startGame(){
         // give the activeplayer the board to mark on
         const printNewRound = () => {
             gameBoard.printBoard();
-        console.log(`${getActivePlayer().name}'s turn`);
+        // console.log(`${getActivePlayer().name}'s turn`);
         }
     
         const playTurn = (row, column) => {
@@ -102,14 +102,18 @@ function startGame(){
                 
                 const result = checkGameStatus(gameBoard.getBoard());
             if (result) {
-                console.log(result);
+                // console.log(result);
                 return;
             } else {
                 const isTie = gameBoard.getBoard().every(row => row.every(cell => cell.getValue()!==''));
                 if(isTie){
-                    console.log('It\'s a tie');
-                    statusDiv.textContent = "Game over. Please restart.";
+                    
+                    statusDiv.textContent = "'It\'s a tie' Please restart.";
                     statusDiv.innerHTML += `<button type="button" id="restart">Restart Game</button>`
+                    const restartButton = document.getElementById('restart');
+                        if (restartButton){
+                            restartButton.addEventListener('click', startGame);
+                        }
                     return;
                 }
                 
