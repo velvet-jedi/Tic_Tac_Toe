@@ -119,7 +119,7 @@ function GameController (
                 board[i][1].getValue() === board[i][2].getValue() && 
                 board[i][0].getValue()!==''
                 ){
-                return `Player ${getActivePlayer().name} wins!`
+                return `Player ${getActivePlayer().name} wins! in a row`
             }
         }
 
@@ -130,27 +130,28 @@ function GameController (
                 board[1][i].getValue() === board[2][i].getValue() && 
                 board[0][i].getValue()!==''
                 ){
-                return `Player ${getActivePlayer().name} wins!`;
+                return `Player ${getActivePlayer().name} wins! in a column`;
             }
         }
 
         // for 3 in a diagonal
-        const diag = [
-            board[0][0].getValue(), 
-            board[1][1].getValue(),
-            board[2][2].getValue(), 
-            board[0][2].getValue(),
-            board[2][0].getValue()
-        ]
         if (
-            (board[0][0].getValue() === board[1][1].getValue() && 
-            board[1][1].getValue() === board[2][2].getValue()) || 
-            (board[0][2].getValue() === board[1][1].getValue() &&  
-            board[1][1].getValue() === board[2][0].getValue()) && 
-            !diag.includes('')
-            ){
-                return `Player ${getActivePlayer().name} wins!`   
-            }
+            board[0][0].getValue() === board[1][1].getValue() &&
+            board[1][1].getValue() === board[2][2].getValue() &&
+            board[0][0].getValue() !== ''
+        ) {
+            return `Player ${getActivePlayer().name} wins! diagonally`;
+        }
+    
+        // Check other diagonal (top-right to bottom-left)
+        if (
+            board[0][2].getValue() === board[1][1].getValue() &&
+            board[1][1].getValue() === board[2][0].getValue() &&
+            board[0][2].getValue() !== ''
+        ) {
+            return `Player ${getActivePlayer().name} wins! diagonally`;
+        }
+
 
         return null;
     }
@@ -217,3 +218,5 @@ function ScreenController() {
 
 ScreenController();
 
+// SHOW STATUS in the turn div
+// btns to start (intro screen) / restart (game over show status)
