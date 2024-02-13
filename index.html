@@ -13,14 +13,21 @@
 <body>
     
     <div class="container">
-        <div class="turn">
+        <div id="turn" class="turn">
+            <button onclick="startGame()" type="button" id="start">Play Game!</button>
         </div>
-        <div class="board"></div>
+        
+        <div id="status" class="status"></div>
+
+        <div class="hidden" id="hidden">
+            <div id="board" class="board"></div>
+        </div>
+        <!-- The game board will be dynamically generated here -->
     </div>
 
+
+
+    <script src="script.js"></script>
 </body>
-
-
-<script src="script.js"></script>
 
 </html>
